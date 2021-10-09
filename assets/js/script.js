@@ -7,7 +7,7 @@ const lowercaseEl = document.getElementById("lowercase");
 const numbersEl = document.getElementById("numbers");
 const symbolsEl = document.getElementById("symbols");
 const generateEl = document.getElementById("generate");
-const clipboard = document.getElementById("clipboard");
+const clipboardEl = document.getElementById("copyPW");
 
 const randomFunc = {
 	lower: getRandomLower,
@@ -18,7 +18,7 @@ const randomFunc = {
 
 // Assignment Code
 function showForm() {
-  
+
   if (optionsForm.style.display === "none") {
     alert("Enter password length, select at least one option then click the Generate Password button to continue.")
     optionsForm.style.display = "block";
@@ -26,6 +26,7 @@ function showForm() {
     optionsForm.style.display = "none";
   }
 }
+
 generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", () => {
 
@@ -36,6 +37,24 @@ generateBtn.addEventListener("click", () => {
   const hasSymbol = symbolsEl.checked;
 
   resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
+
+clipboardBtn = document.querySelector("copyPW");
+clipboardEl.addEventListener("click", () => {
+  const textarea = document.createElement("textarea");
+  const password = resultEl.value;
+
+  if (!password) {
+    return;
+  }
+
+  textarea.value = password;
+  document.body.appendChild(textarea);
+  textarea.select();
+  var copyText = document.getElementById("result");
+  navigator.clipboard.writeText(copyText.value);
+  textarea.remove();
+  alert('Password copied to clipboard');
 });
 
 // Generate password
@@ -78,28 +97,3 @@ function getRandomSymbol() {
 	const symbols = "!@#$%^&*()=<>/,.";
 	return symbols[Math.floor(Math.random() * symbols.length)];
 }
-
-// Write password to the #password input
-//function writePassword(finalPassword) {
-//	var password = generatePassword();
-//	var passwordText = document.querySelector("#password");
-
-//	passwordText.value = password;
-//}
-
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
-
-/*clipboard.addEventListener("click", () => {
-  const textarea = document.getElementById("password");
-  const password = resultEl.innerText;
-
-  if(!password) { return; }
-
-  textarea.value = password;
-  document.body.appendChild(textarea);
-  textarea.select();
-  Document.execCommand("copy");
-  textarea.remove();
-  alert("Password copied to clipboard");
-});*/
