@@ -1,3 +1,5 @@
+
+const optionsForm = document.getElementById("cardOptions");
 const resultEl = document.getElementById("result");
 const lengthEl = document.getElementById("length");
 const uppercaseEl = document.getElementById("uppercase");
@@ -15,8 +17,18 @@ const randomFunc = {
 };
 
 // Assignment Code
+function showForm() {
+  
+  if (optionsForm.style.display === "none") {
+    alert("Enter password length, select at least one option then click the Generate Password button to continue.")
+    optionsForm.style.display = "block";
+  } else {
+    optionsForm.style.display = "none";
+  }
+}
 generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", () => {
+
   const length = +lengthEl.value;
   const hasLower = lowercaseEl.checked;
   const hasUpper = uppercaseEl.checked;
@@ -34,7 +46,7 @@ function generatePassword(lower, upper, number, symbol, length) {
 
   // Doesn't have a selected type
   if(typesCount === 0) {
-    return window.alert("Please select at least one option then try again.");
+    return ;
   }
 
   //create a loop

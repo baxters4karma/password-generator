@@ -112,7 +112,7 @@ Image showing the web application's appearance and functionality:
 * Module 3: JavaScript Bootcampspot Material
 * Module 3: Class Activities
 * [Module 3 JavaScript Challenge: Password Generator](https://courses.bootcampspot.com/courses/798/assignments/17676?module_item_id=306550)
-* [Traversy Media [Oct 21, 2019]. JavaScript Password Generator Tutorial](https://www.youtube.com/watch?v=duNmhKgtcsI)
+* [Traversy, B. Traversy Media [Oct 21, 2019]. JavaScript Password Generator Tutorial](https://www.youtube.com/watch?v=duNmhKgtcsI)
 
 [back to top](#table-of-contents)
 - - -
