@@ -55,6 +55,7 @@ clipboardEl.addEventListener("click", () => {
   navigator.clipboard.writeText(copyText.value);
   textarea.remove();
   alert('Password copied to clipboard');
+  
 });
 
 // Generate password
