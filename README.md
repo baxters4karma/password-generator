@@ -1,4 +1,4 @@
-# 03 JavaScript Challenge: Password Generator
+# 03 JavaScript: Password Generator
 Challenge Assignment 3, JavaScript Password Generator
 
 ## Table of Contents
@@ -7,6 +7,7 @@ Challenge Assignment 3, JavaScript Password Generator
 [Acceptance Criteria](#acceptance-criteria):
 &nbsp;[General](#general),
 &nbsp;[Technical](#technical),
+&nbsp;[Deployment](#deployment),
 &nbsp;[Quality](#quality) |
 [Review/Deployment](#reviewdeployment) |
 [Usage](#usage) |
@@ -15,16 +16,19 @@ Challenge Assignment 3, JavaScript Password Generator
 
 ## Description
 
-This week’s Challenge involves creating an application that an employee can use to generate a random password based on criteria they’ve selected. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code written by me. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes. This week’s coursework will teach the skills needed to succeed in this assignment.
+This week’s Challenge involves creating an application that an employee can use to generate a random password based on user-selected criteria. This app will run in the browser and features dynamically updated HTML and CSS powered by the JavaScript code. It will have a clean and polished user interface and is responsive, which ensures that it adapts to multiple screen sizes.
+
+If you are unfamiliar with special characters, take a look at some [examples of special characters on the OWASP Foundation website](https://www.owasp.org/index.php/Password_special_characters).
 
 [back to top](#table-of-contents)
 
 ## User Story
 
 ```
-AS AN employer
-I WANT to view a potential employee's deployed portfolio of work samples
-SO THAT I can review samples of their work and assess whether they're a good candidate for an open position
+AS AN employee with access to sensitive data
+I WANT to randomly generate a password that meets certain criteria
+SO THAT I can create a strong password that provides greater security
+
 ```
 [back to top](#table-of-contents)
 
@@ -32,22 +36,32 @@ SO THAT I can review samples of their work and assess whether they're a good can
 ### General
 
 ```
-GIVEN I need to sample a potential employee's previous work
-WHEN I load their portfolio
-THEN I am presented with the developer's name, a recent photo or avatar, and links to sections about them, their work, and how to contact them
-WHEN I click one of the links in the navigation
-THEN the UI scrolls to the corresponding section
-WHEN I click on the link to the section about their work
-THEN the UI scrolls to a section with titled images of the developer's applications
-WHEN I am presented with the developer's first application
-THEN that application's image should be larger in size than the others
-WHEN I click on the images of the applications
-THEN I am taken to that deployed application
-WHEN I resize the page or view the site on various screens and devices
-THEN I am presented with a responsive layout that adapts to my viewport
+GIVEN I need a new, secure password
+WHEN I click the button to generate a password
+THEN I am presented with a series of prompts for password criteria
+WHEN prompted for password criteria
+THEN I select which criteria to include in the password
+WHEN prompted for the length of the password
+THEN I choose a length of at least 8 characters and no more than 128 characters
+WHEN prompted for character types to include in the password
+THEN I choose lowercase, uppercase, numeric, and/or special characters
+WHEN I answer each prompt
+THEN my input should be validated and at least one character type should be selected
+WHEN all prompts are answered
+THEN a password is generated that matches the selected criteria
+WHEN the password is generated
+THEN the password is either displayed in an alert or written to the page
+
 ```
 [back to top](#table-of-contents)
+
 ### Technical
+
+* No errors should be produced in console when inspected using Chrome DevTools.
+
+[back to top](#table-of-contents)
+
+### Deployment
 
 * Application deployed at live URL.
 * Application loads with no errors.
@@ -56,26 +70,30 @@ THEN I am presented with a responsive layout that adapts to my viewport
 
 [back to top](#table-of-contents)
 ### Quality
-
+#### Application
+* Application user experience is intuitive and easy to navigate.
+* Application user interface style is clean and polished.
 * Application resembles the mock-up functionality provided in the Challenge instructions.
+
+#### Repository
 * Repository has a unique name.
 * Repository follows best practices for file structure and naming conventions.
 * Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 * Repository contains multiple descriptive commit messages.
-* Repository contains quality readme with description, screenshot, link to deployed application.
+* Repository contains quality README file with  description, screenshot, link to deployed application.
 
 [back to top](#table-of-contents)
 ## Review/Deployment
 
 You are required to submit BOTH of the following for review:
 
-* Deployed Application: &nbsp; [Live URL](https://baxters4karma.github.io/portfolio/)
+* Deployed Application: &nbsp; [Live URL](https://baxters4karma.github.io/password-generator/)
 
-* GitHub Repository: &nbsp; [GitHub Repository URL](https://github.com/baxters4karma/portfolio)
+* GitHub Repository: &nbsp; [GitHub Repository URL](https://github.com/baxters4karma/password-generator)
 
 [back to top](#table-of-contents)
 ## Usage
-Student will use this website to showcase their skills, talents, and projects to employers. As the course progresses, the student will update with new/existing projects.
+Employee will use this application to generate a random password based on user-selected criteria. Employee(s) will run the application's clean and polished user interface within the browser, ensuring responsiveness is built in for adaption to multiple screen sizes.
 
 Please note this website was designed with a mobile-first mindset and uses the following media queries for responsive display on mobile phones, tablets, and desktop screens:
 * Mobile Phones (max-width = 575px)
@@ -84,16 +102,16 @@ Please note this website was designed with a mobile-first mindset and uses the f
 
 [back to top](#table-of-contents)
 ## Mock-Up
-Animation showing the web application's appearance and functionality:
+Image showing the web application's appearance and functionality:
 
-![portfolio demo](./assets/images/02-advanced-css-homework-demo.gif)
+![portfolio demo](./assets/images/03-javascript-homework-demo.png)
 
 [back to top](#table-of-contents)
 ## Credits
 
-* Module 2: Advanced CSS Bootcampspot Material
-* Module 2: Class Activities
-* [Module 2 Advanced CSS Challenge: Professional Portfolio](https://courses.bootcampspot.com/courses/798/assignments/17671?module_item_id=306256)
+* Module 3: JavaScript Bootcampspot Material
+* Module 3: Class Activities
+* [Module 3 JavaScript Challenge: Password Generator](https://courses.bootcampspot.com/courses/798/assignments/17676?module_item_id=306550)
 
 [back to top](#table-of-contents)
 - - -
