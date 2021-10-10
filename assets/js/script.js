@@ -1,4 +1,4 @@
-
+//Get DOM elements
 const optionsForm = document.getElementById("cardOptions");
 const resultEl = document.getElementById("result");
 const lengthEl = document.getElementById("length");
@@ -9,6 +9,7 @@ const symbolsEl = document.getElementById("symbols");
 const generateEl = document.getElementById("generate");
 const clipboardEl = document.getElementById("copyPW");
 
+// creating object that calls the random generator functions
 const randomFunc = {
 	lower: getRandomLower,
 	upper: getRandomUpper,
@@ -16,18 +17,7 @@ const randomFunc = {
 	symbol: getRandomSymbol,
 };
 
-// Assignment Code
-function showForm() {
-
-  if (optionsForm.style.display === "none") {
-    alert("Enter password length, select at least one option then click the Generate Password button to continue.")
-    optionsForm.style.display = "block";
-  } else {
-    optionsForm.style.display = "none";
-
-  }
-}
-
+// generate event listen
 generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", () => {
   const length = +lengthEl.value;
@@ -39,20 +29,11 @@ generateBtn.addEventListener("click", () => {
   resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
 
-function resetForm() {
-  length = null;
-  hasLower = false;
-  hasUpper = false;
-  hasNumber = false;
-  hasSymbol = false;
-  showForm();
-}
-
-function copyPwToClipboard () {
+// Copy password to clipboard
 clipboardBtn = document.querySelector("copyPW");
 clipboardEl.addEventListener("click", () => {
   const textarea = document.createElement("textarea");
-  const password = resultEl.value;
+  const password = resultEl.innerHTML;
 
   if (!password) {
     return;
@@ -61,57 +42,79 @@ clipboardEl.addEventListener("click", () => {
   textarea.value = password;
   document.body.appendChild(textarea);
   textarea.select();
-  var copyText = document.getElementById("result");
-  navigator.clipboard.writeText(copyText.value);
+  var copyText = resultEl.innerHTML;
+  navigator.clipboard.writeText(copyText);
   textarea.remove();
   alert('Password copied to clipboard');
-  }
-}
-  resetForm();
+ });
 
-});
-
-// Generate password
+// Generate password function
+/*  (1) Initialize password variable
+    (2) Filter out unchecked types
+    (3) loop over length, calling generator function for each type
+    (4) add final password to the password variable and return  */
 function generatePassword(lower, upper, number, symbol, length) {
   let generatedPassword = "";
   const typesCount = lower + upper + number + symbol;
-  const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+  const typesArr = [{lower}, {upper}, {number}, {symbol}].filter
+  (
+    item => Object.values(item)[0]
+  );
 
   // Doesn't have a selected type
   if(typesCount === 0) {
-    return ;
+    return '';
   }
 
   //create a loop
-  for(let i=0; i<length; i+=typesCount) {
+  for(let i = 0; i < length; i += typesCount) {
     typesArr.forEach(type => {
       const funcName = Object.keys(typesArr[Math.floor(Math.random() * typesArr.length)])[0];
       generatedPassword += randomFunc[funcName]();
     });
   }
+
   const finalPassword = generatedPassword.slice(0, length);
 
   return finalPassword;
 }
 
-// generator function for random lower characters, using ASCII character values
-// lowercase ASCII code starts at 97
+// Show form entries/prompts for user to select user-specified criteria
+function showForm() {
+
+  if (optionsForm.style.display === "none") {
+    alert("(1) Read these instructions\n(2) Click OK to close this dialog box\n(3) Enter password length by clicking on up/down scroll bar within field\n(4) Select one or more options\n(5) Click the Generate Password button\n(6) Click the Copy Password button, copying newly created password")
+    optionsForm.style.display = "block";
+  } else {
+    optionsForm.style.display = "none";
+  }
+}
+
+function clearForm() {
+  document.getElementById("result").value = "";
+  document.getElementById("lowercase").checked = false;
+  document.getElementById("uppercase").checked = false;
+  document.getElementById("numbers").checked = false;
+  document.getElementById("symbols").checked = false;
+  showForm();
+};
+
+/* generator function for random lowercase characters, using ASCII character values, 26 lowercase letters that start at ASCII code 97*/
 function getRandomLower() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
-// generator function for random upper characters
+/* generator function for random upper characters, using ASCII character values, 26 uppercase letters that start at ASCII code 65*/
 function getRandomUpper() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
-// generator function for random numbers
+/* generator function for random numbers, using ASCII character values, 10 numbers (0-9) that start at ASCII code 48*/
 function getRandomNumber() {
 	return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
-// generator function for random symbol characters from specified list
+// generator function for random symbol characters, using ASCII character values, 15 symbols that start at ASCII code 33*/
 function getRandomSymbol() {
-	const symbols = "!@#$%^&*()=<>/,.";
-	return symbols[Math.floor(Math.random() * symbols.length)];
+	return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 }
