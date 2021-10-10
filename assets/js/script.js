@@ -24,12 +24,12 @@ function showForm() {
     optionsForm.style.display = "block";
   } else {
     optionsForm.style.display = "none";
+
   }
 }
 
 generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", () => {
-
   const length = +lengthEl.value;
   const hasLower = lowercaseEl.checked;
   const hasUpper = uppercaseEl.checked;
@@ -39,6 +39,16 @@ generateBtn.addEventListener("click", () => {
   resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
 
+function resetForm() {
+  length = null;
+  hasLower = false;
+  hasUpper = false;
+  hasNumber = false;
+  hasSymbol = false;
+  showForm();
+}
+
+function copyPwToClipboard () {
 clipboardBtn = document.querySelector("copyPW");
 clipboardEl.addEventListener("click", () => {
   const textarea = document.createElement("textarea");
@@ -55,7 +65,10 @@ clipboardEl.addEventListener("click", () => {
   navigator.clipboard.writeText(copyText.value);
   textarea.remove();
   alert('Password copied to clipboard');
-  
+  }
+}
+  resetForm();
+
 });
 
 // Generate password
@@ -81,19 +94,23 @@ function generatePassword(lower, upper, number, symbol, length) {
   return finalPassword;
 }
 
-// generator functions
+// generator function for random lower characters, using ASCII character values
+// lowercase ASCII code starts at 97
 function getRandomLower() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
+// generator function for random upper characters
 function getRandomUpper() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
+// generator function for random numbers
 function getRandomNumber() {
 	return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
+// generator function for random symbol characters from specified list
 function getRandomSymbol() {
 	const symbols = "!@#$%^&*()=<>/,.";
 	return symbols[Math.floor(Math.random() * symbols.length)];
