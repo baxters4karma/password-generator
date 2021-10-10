@@ -26,10 +26,12 @@ generateBtn.addEventListener("click", () => {
   const hasNumber = numbersEl.checked;
   const hasSymbol = symbolsEl.checked;
 
-  resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
-});
+    // call to generate password function
+      resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);}
+);
 
 // Copy password to clipboard
+
 clipboardBtn = document.querySelector("copyPW");
 clipboardEl.addEventListener("click", () => {
   const textarea = document.createElement("textarea");
@@ -46,7 +48,9 @@ clipboardEl.addEventListener("click", () => {
   navigator.clipboard.writeText(copyText);
   textarea.remove();
   alert('Password copied to clipboard');
+  window.location.reload();
  });
+
 
 // Generate password function
 /*  (1) Initialize password variable
@@ -88,24 +92,17 @@ function generatePassword(lower, upper, number, symbol, length) {
 
 // Show form entries/prompts for user to select user-specified criteria
 function showForm() {
-
   if (optionsForm.style.display === "none") {
     alert("(1) Read these instructions\n(2) Click OK to close this dialog box\n(3) Enter password length by clicking on up/down scroll bar within field\n(4) Select one or more options\n(5) Click the Generate Password button\n(6) Click the Copy Password button, copying newly created password")
     optionsForm.style.display = "block";
+    // if no type option is selected, alert presented to user
+  } else if (uppercaseEl.checked === false && lowercaseEl.checked === false && numbersEl.checked === false && symbolsEl.checked === false) {
+    alert("Type option is missing, need to select at least 1 type option.");
+    // start password generator function
   } else {
-    optionsForm.style.display = "none";
+    generatePassword();
   }
 }
-
-// Clear (or reset) form after password is copied and placed on clipboard
-function clearForm() {
-  document.getElementById("result").value = "";
-  document.getElementById("lowercase").checked = false;
-  document.getElementById("uppercase").checked = false;
-  document.getElementById("numbers").checked = false;
-  document.getElementById("symbols").checked = false;
-  showForm();
-};
 
 /* generator function for random lowercase characters, using ASCII character values, there are 26 lowercase letters and they start at ASCII code 97*/
 
