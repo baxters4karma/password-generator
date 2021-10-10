@@ -17,7 +17,7 @@ const randomFunc = {
 	symbol: getRandomSymbol,
 };
 
-// generate event listen
+// event listening for the generate password button click
 generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", () => {
   const length = +lengthEl.value;
@@ -53,29 +53,36 @@ clipboardEl.addEventListener("click", () => {
     (2) Filter out unchecked types
     (3) loop over length, calling generator function for each type
     (4) add final password to the password variable and return  */
+
 function generatePassword(lower, upper, number, symbol, length) {
+  // Initialize password variable
   let generatedPassword = "";
   const typesCount = lower + upper + number + symbol;
+
+  // Filter out unchecked types
   const typesArr = [{lower}, {upper}, {number}, {symbol}].filter
   (
     item => Object.values(item)[0]
   );
 
-  // Doesn't have a selected type
+  // Handling if no selected type
   if(typesCount === 0) {
     return '';
   }
 
-  //create a loop
+  // Looping over user-specified length, calling generator function for each option type
   for(let i = 0; i < length; i += typesCount) {
     typesArr.forEach(type => {
+      // this code removes set pattern of lowercase, uppercase, number, and symbol
       const funcName = Object.keys(typesArr[Math.floor(Math.random() * typesArr.length)])[0];
       generatedPassword += randomFunc[funcName]();
     });
   }
 
+  // this code will remove any extra characters, ensuring the random password meets user requested length
   const finalPassword = generatedPassword.slice(0, length);
 
+  // Returning final password variable
   return finalPassword;
 }
 
@@ -90,6 +97,7 @@ function showForm() {
   }
 }
 
+// Clear (or reset) form after password is copied and placed on clipboard
 function clearForm() {
   document.getElementById("result").value = "";
   document.getElementById("lowercase").checked = false;
@@ -99,22 +107,23 @@ function clearForm() {
   showForm();
 };
 
-/* generator function for random lowercase characters, using ASCII character values, 26 lowercase letters that start at ASCII code 97*/
+/* generator function for random lowercase characters, using ASCII character values, there are 26 lowercase letters and they start at ASCII code 97*/
+
 function getRandomLower() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
 
-/* generator function for random upper characters, using ASCII character values, 26 uppercase letters that start at ASCII code 65*/
+/* generator function for random upper characters, using ASCII character values, there are 26 uppercase letters they start at ASCII code 65*/
 function getRandomUpper() {
 	return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
 
-/* generator function for random numbers, using ASCII character values, 10 numbers (0-9) that start at ASCII code 48*/
+/* generator function for random numbers, using ASCII character values, there are 10 numbers (0-9) and they start at ASCII code 48*/
 function getRandomNumber() {
 	return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 }
 
-// generator function for random symbol characters, using ASCII character values, 15 symbols that start at ASCII code 33*/
+// generator function for random symbol characters, using ASCII character values, there are 15 symbols and they start at ASCII code 33*/
 function getRandomSymbol() {
 	return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 }

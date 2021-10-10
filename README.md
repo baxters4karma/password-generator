@@ -18,7 +18,9 @@ Challenge Assignment 3, JavaScript Password Generator
 
 This week’s Challenge involves creating an application that an employee can use to generate a random password based on user-selected criteria. This app will run in the browser and features dynamically updated HTML and CSS powered by the JavaScript code. It will have a clean and polished user interface and is responsive, which ensures that it adapts to multiple screen sizes.
 
-If you are unfamiliar with special characters, take a look at some [examples of special characters on the OWASP Foundation website](https://www.owasp.org/index.php/Password_special_characters).
+ASCII character codes used within coding of this project were found here: [American Standard Code for Information Interchange (ASCII) table website](https://theasciicode.com.ar/).
+
+Coding from [Traversy Media's *JavaScript Password Generator*](#credits) tutorial was incorporated into project while keeping existing starter code and mock design.
 
 [back to top](#table-of-contents)
 
@@ -95,16 +97,21 @@ You are required to submit BOTH of the following for review:
 ## Usage
 Employee will use this application to generate a random password based on user-selected criteria. Employee(s) will run the application's clean and polished user interface within the browser, ensuring responsiveness is built in for adaption to multiple screen sizes.
 
-Please note this website was designed with a mobile-first mindset and uses the following media queries for responsive display on mobile phones, tablets, and desktop screens:
-* Mobile Phones (max-width = 575px)
-* Tablets (max-width = 768px)
-* Desktops (ax-width = 980px)
+Please note this website was designed with a mobile-first mindset and uses the following media queries for responsive display on mobile phone and tablet screens:
+* Mobile Phones (max-width = 500px)
+* Tablets (max-width = 690px)
 
 [back to top](#table-of-contents)
 ## Mock-Up
 Image showing the web application's appearance and functionality:
 
 ![portfolio demo](./assets/images/03-javascript-homework-demo.png)
+
+A 'Copy Password' button was added to better the user experience.
+
+The initial design was left to match mock-up, would present the look below as an enhancement to the project.
+
+![](./assets/images/03-proposed-enhancement.jpg)
 
 [back to top](#table-of-contents)
 ## Credits
@@ -113,8 +120,8 @@ Image showing the web application's appearance and functionality:
 * Module 3: Class Activities
 * [Module 3 JavaScript Challenge: Password Generator](https://courses.bootcampspot.com/courses/798/assignments/17676?module_item_id=306550)
 * [Traversy, B. Traversy Media [Oct 21, 2019]. JavaScript Password Generator Tutorial](https://www.youtube.com/watch?v=duNmhKgtcsI)
+* [American Standard Code for Information Interchange (ASCII) table website](https://theasciicode.com.ar/)
 
 [back to top](#table-of-contents)
 - - -
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
-
